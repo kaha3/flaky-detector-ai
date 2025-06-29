@@ -1,4 +1,4 @@
-# codex-test
+# Flaky report
 
 This repository includes simple scripts for demonstrating Codex features.
 
