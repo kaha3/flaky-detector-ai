@@ -1,0 +1,12 @@
+{
+  "Login with valid credentials": {
+    "statuses": ["passed", "failed"],
+    "flaky": true,
+    "likelyCause": "Possible race condition in auth flow"
+  },
+  "Add to cart from PLP": {
+    "statuses": ["failed", "passed"],
+    "flaky": true,
+    "likelyCause": "UI element not clickable"
+  }
+}
