@@ -1,0 +1,10 @@
+[
+  { "testName": "Login with valid credentials", "status": "passed", "timestamp": "2025-06-14T10:00:00Z" },
+  { "testName": "Login with valid credentials", "status": "failed", "timestamp": "2025-06-14T11:00:00Z" },
+  { "testName": "Search product by name", "status": "passed", "timestamp": "2025-06-14T10:00:00Z" },
+  { "testName": "Search product by name", "status": "passed", "timestamp": "2025-06-14T11:00:00Z" },
+  { "testName": "Add to cart from PLP", "status": "failed", "timestamp": "2025-06-14T10:00:00Z" },
+  { "testName": "Add to cart from PLP", "status": "passed", "timestamp": "2025-06-14T11:00:00Z" },
+  { "testName": "Checkout with Visa", "status": "passed", "timestamp": "2025-06-14T10:00:00Z" },
+  { "testName": "Checkout with Visa", "status": "passed", "timestamp": "2025-06-14T11:00:00Z" }
+]
