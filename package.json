@@ -1,0 +1,16 @@
+{
+  "name": "flaky-detector",
+  "version": "1.0.0",
+  "description": "CLI tool to detect flaky tests and generate reports",
+  "main": "generateReports.js",
+  "bin": {
+    "flaky-detector": "./generateReports.js"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8",
+    "puppeteer": "^24.11.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

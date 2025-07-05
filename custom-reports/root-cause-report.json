@@ -1,0 +1,32 @@
+{
+  "Login with valid credentials": {
+    "statuses": [
+      "passed",
+      "failed"
+    ],
+    "flaky": true,
+    "likelyCause": "Possible race condition in auth flow"
+  },
+  "Search product by name": {
+    "statuses": [
+      "passed",
+      "passed"
+    ],
+    "flaky": false
+  },
+  "Add to cart from PLP": {
+    "statuses": [
+      "failed",
+      "passed"
+    ],
+    "flaky": true,
+    "likelyCause": "UI element not clickable"
+  },
+  "Checkout with Visa": {
+    "statuses": [
+      "passed",
+      "passed"
+    ],
+    "flaky": false
+  }
+}
