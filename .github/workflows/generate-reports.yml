@@ -25,7 +25,7 @@ jobs:
         run: node generateReports.js
 
       - name: Upload summary HTML
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: flaky-summary-html
           path: reports/flaky-summary.html
