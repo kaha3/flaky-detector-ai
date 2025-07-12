@@ -1,5 +1,0 @@
-Test Name,Flaky,Likely Cause
-"Login with valid credentials",TRUE,"Possible race condition in auth flow"
-"Search product by name",FALSE,
-"Add to cart from PLP",TRUE,"UI element not clickable"
-"Checkout with Visa",FALSE,

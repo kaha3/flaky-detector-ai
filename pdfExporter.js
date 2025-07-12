@@ -14,7 +14,10 @@ async function main() {
     process.exit(1);
   }
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
+
   try {
     const page = await browser.newPage();
     await page.goto(pathToFileURL(inputPath).href, { waitUntil: 'networkidle0' });
@@ -29,3 +32,4 @@ main().catch(err => {
   console.error(err);
   process.exit(1);
 });
+

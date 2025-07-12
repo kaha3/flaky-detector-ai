@@ -23,26 +23,36 @@ function main() {
 
   const data = JSON.parse(fs.readFileSync(inputPath, 'utf8'));
   const rows = [];
-  let flakyCount = 0;
-  let stableCount = 0;
+  const flakyCount = { flaky: 0, stable: 0 };
+  const causeCounts = {};
 
   for (const [name, info] of Object.entries(data)) {
     const flaky = info.flaky ? '✅' : '❌';
-    const cause = info.likelyCause || '';
+    const cause = info.likelyCause || 'Unknown';
     const cls = info.flaky ? 'pass' : 'fail';
-    if (info.flaky) flakyCount++;
-    else stableCount++;
-
     rows.push(
       `<tr><td>${escapeHtml(name)}</td><td class="${cls}">${flaky}</td><td>${escapeHtml(cause)}</td></tr>`
     );
+
+    if (info.flaky) {
+      flakyCount.flaky++;
+      causeCounts[cause] = (causeCounts[cause] || 0) + 1;
+    } else {
+      flakyCount.stable++;
+    }
   }
+
+  const pieData = JSON.stringify({ labels: ['Flaky', 'Stable'], data: [flakyCount.flaky, flakyCount.stable] });
+  const barData = JSON.stringify({
+    labels: Object.keys(causeCounts),
+    data: Object.values(causeCounts)
+  });
 
   const html = `
     <html>
       <head>
         <style>
-          table { border-collapse: collapse; width: 100%; }
+          table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
           th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
           .pass { color: green; }
           .fail { color: red; }
@@ -56,24 +66,38 @@ function main() {
           ${rows.join('\n')}
         </table>
 
-        <h3>Flaky vs Stable Tests</h3>
-        <canvas id="flakyChart" width="400" height="200"></canvas>
+        <h3>Flaky vs. Stable Tests</h3>
+        <canvas id="flakyPie" width="400" height="200"></canvas>
+
+        <h3>Flaky Tests by Root Cause</h3>
+        <canvas id="causeBar" width="600" height="300"></canvas>
+
         <script>
-          const ctx = document.getElementById('flakyChart').getContext('2d');
-          new Chart(ctx, {
+          const pie = ${pieData};
+          const bar = ${barData};
+
+          new Chart(document.getElementById('flakyPie'), {
+            type: 'pie',
+            data: {
+              labels: pie.labels,
+              datasets: [{
+                data: pie.data,
+                backgroundColor: ['#f39c12', '#27ae60']
+              }]
+            }
+          });
+
+          new Chart(document.getElementById('causeBar'), {
             type: 'bar',
             data: {
-              labels: ['Flaky Tests', 'Stable Tests'],
+              labels: bar.labels,
               datasets: [{
-                label: '# of Tests',
-                data: [${flakyCount}, ${stableCount}],
-                backgroundColor: ['#f39c12', '#2ecc71']
+                label: 'Flaky Tests',
+                data: bar.data,
+                backgroundColor: '#e74c3c'
               }]
             },
             options: {
-              plugins: {
-                legend: { display: false }
-              },
               scales: {
                 y: { beginAtZero: true }
               }
