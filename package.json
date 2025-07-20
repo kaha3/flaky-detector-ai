@@ -9,6 +9,7 @@
   "dependencies": {
     "chart.js": "^4.5.0",
     "minimist": "^1.2.8",
+    "openai": "^5.10.1",
     "puppeteer": "^24.11.1"
   },
   "keywords": [

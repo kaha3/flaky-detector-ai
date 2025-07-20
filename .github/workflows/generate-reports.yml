@@ -31,7 +31,7 @@ jobs:
           path: reports/flaky-summary.html
 
       - name: Upload PDF report (optional)
-        uses: actions/upload-artifact@v4 # ← FIXED THIS LINE
+        uses: actions/upload-artifact@v4 
         with:
           name: flaky-summary-pdf
           path: reports/flaky-summary.pdf

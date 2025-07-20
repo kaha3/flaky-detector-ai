@@ -5,14 +5,7 @@
       "failed"
     ],
     "flaky": true,
-    "likelyCause": "Possible race condition in auth flow"
-  },
-  "Search product by name": {
-    "statuses": [
-      "passed",
-      "passed"
-    ],
-    "flaky": false
+    "likelyCause": "The most likely root cause of the flaky test \"Login with valid credentials\" is an intermittent issue with the authentication service or network instability. This could include timeouts, server unavailability, or race conditions in the login process. Additionally, there may be issues with test data setup or environmental inconsistencies, such as differences between test environments."
   },
   "Add to cart from PLP": {
     "statuses": [
@@ -20,13 +13,6 @@
       "passed"
     ],
     "flaky": true,
-    "likelyCause": "UI element not clickable"
-  },
-  "Checkout with Visa": {
-    "statuses": [
-      "passed",
-      "passed"
-    ],
-    "flaky": false
+    "likelyCause": "The flaky test \"Add to cart from PLP\" with a status history of \"failed, passed\" suggests an intermittent issue. The most likely root cause could be:\n\n1. **Timing Issues**: The test might be failing due to timing problems, such as the page not being fully loaded or elements not being ready when the test attempts to interact with them. This could cause the test to fail"
   }
 }
